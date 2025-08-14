@@ -30,6 +30,8 @@ Example compilation:
 #include <float.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+#include <stdlib.h>
 #include <time.h>
 #include <ctype.h>
 
@@ -70,6 +72,12 @@ int mp_invisqrt (int n, int radix, int in, int out[],
 void mp_sprintf (int n, int log10_radix, int in[], char out[]);
 void mp_sscanf (int n, int log10_radix, char in[], int out[]);
 
+int is_chinese_locale() {
+    const char *lang = getenv("LANG");
+    if (lang == NULL) return 0;
+    return (strstr(lang, "zh_CN") != NULL || strstr(lang, "zh_SG") != NULL);
+}
+
 int main(int argc, char *argv[]) {
   int nfft, log2_nfft, radix, log10_radix, n, j = 0, k = 0, l = 0, npow, nprc;
   double err;
@@ -79,20 +87,37 @@ int main(int argc, char *argv[]) {
   clock_t start_time;
   double elap_time, loop_time;
   FILE *f_out;
+  int chinese = is_chinese_locale();
 #ifndef QUIET_OUT
-  fprintf(stdout, "Calculation of PI using FFT and AGM, %s\n", PI_FFTC_VER);
+  if (chinese) {
+    fprintf(stdout, "使用FFT和AGM计算圆周率π，%s\n", PI_FFTC_VER);
+  } else {
+    fprintf(stdout, "Calculation of PI using FFT and AGM, %s\n", PI_FFTC_VER);
+  }
 #endif
 
   /* if not run with the proper parameters from the command line */
   if (argc != 2) {
-    printf("\nUsage: %s digits\n", argv[0]);
-    printf("\nNumber of digits of pi to calculate?\n");
-    scanf("%d", &nfft);
+    if (chinese) {
+      printf("\n用法: %s 位数\n", argv[0]);
+      printf("\n要计算多少位的圆周率π？\n");
+    } else {
+      printf("\nUsage: %s digits\n", argv[0]);
+      printf("\nNumber of digits of pi to calculate?\n");
+    }
+    if (scanf("%d", &nfft) != 1) {
+        fprintf(stderr, chinese ? "错误：输入无效\n" : "Error: Invalid input\n");
+        return 1;
+    }
   } else
     nfft = atoi(argv[1]);
 
 #ifndef QUIET_OUT
-  fprintf(stdout, "initializing...\n");
+  if (chinese) {
+    fprintf(stdout, "正在初始化...\n");
+  } else {
+    fprintf(stdout, "initializing...\n");
+  }
 #endif
   nfft /= 4;
   start_time = clock();
@@ -295,9 +320,17 @@ int main(int argc, char *argv[]) {
 
   /* don't quite before allowing the user to see all output */
   if (argc != 2) {
-    fgets(filename, 99, stdin);
-    fprintf(stdout, "Hit RETURN to exit.\n");
-    fgets(filename, 99, stdin);
+    if (fgets(filename, 99, stdin) == NULL) {
+        /* Ignore input error and continue */
+    }
+    if (chinese) {
+      fprintf(stdout, "按回车键退出。\n");
+    } else {
+      fprintf(stdout, "Hit RETURN to exit.\n");
+    }
+    if (fgets(filename, 99, stdin) == NULL) {
+        /* Ignore input error and continue */
+    }
   }
 
   return (0);
