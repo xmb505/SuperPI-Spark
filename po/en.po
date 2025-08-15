@@ -1,0 +1,65 @@
+# English translations for SuperPI
+# Copyright (C) 2025 SuperPI Project
+msgid ""
+msgstr ""
+"Project-Id-Version: superpi 1.0\n"
+"POT-Creation-Date: 2025-08-15 12:00+0800\n"
+"PO-Revision-Date: 2025-08-15 12:00+0800\n"
+"Last-Translator: SuperPI Team\n"
+"Language-Team: English\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: pi_fftcs.c:96
+msgid "Calculation of PI using FFT and AGM, %s\n"
+msgstr "Calculation of PI using FFT and AGM, %s\n"
+
+#: pi_fftcs.c:101
+msgid "Usage: %s digits\n"
+msgstr "Usage: %s digits\n"
+
+#: pi_fftcs.c:102
+msgid "Number of digits of pi to calculate?\n"
+msgstr "Number of digits of pi to calculate?\n"
+
+#: pi_fftcs.c:108
+msgid "initializing...\n"
+msgstr "initializing...\n"
+
+#: pi_fftcs.c:114
+msgid "nfft= %d\nradix= %d\nerror_margin= %g\n"
+msgstr "nfft= %d\nradix= %d\nerror_margin= %g\n"
+
+#: pi_fftcs.c:115
+msgid "calculating %d digits of PI...\n"
+msgstr "calculating %d digits of PI...\n"
+
+#: pi_fftcs.c:119
+msgid "AGM iteration\n"
+msgstr "AGM iteration\n"
+
+#: pi_fftcs.c:158
+msgid "precision= %d: %.2f sec\n"
+msgstr "precision= %d: %.2f sec\n"
+
+#: pi_fftcs.c:189
+msgid "writing %s...\n"
+msgstr "writing %s...\n"
+
+#: pi_fftcs.c:192
+msgid "%.2f sec. (real time)\n"
+msgstr "%.2f sec. (real time)\n"
+
+#: pi_fftcs.c:202
+msgid "Hit RETURN to exit.\n"
+msgstr "Hit RETURN to exit.\n"
+
+#: pi_fftcs.c:104
+msgid "Error: Invalid input\n"
+msgstr "Error: Invalid input\n"
+
+#: pi_fftcs.c:111
+msgid "Allocation Failure!\n"
+msgstr "Allocation Failure!\n"

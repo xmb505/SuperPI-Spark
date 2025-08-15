@@ -1,0 +1,43 @@
+# 简体中文翻译
+Calculation of PI using FFT and AGM, %s
+使用FFT和AGM计算圆周率π，%s
+
+Usage: %s digits
+用法: %s 位数
+
+Number of digits of pi to calculate?
+要计算多少位的圆周率π？
+
+initializing...
+正在初始化...
+
+nfft= %d
+radix= %d
+error_margin= %g
+nfft= %d
+基数= %d
+误差范围= %g
+
+calculating %d digits of PI...
+正在计算 %d 位的圆周率π...
+
+AGM iteration
+AGM迭代
+
+precision= %d: %.2f sec
+精度= %d: %.2f 秒
+
+writing %s...
+正在写入 %s...
+
+%.2f sec. (real time)
+%.2f 秒 (实际时间)
+
+Hit RETURN to exit.
+按回车键退出。
+
+Error: Invalid input
+错误：输入无效
+
+Allocation Failure!
+内存分配失败！

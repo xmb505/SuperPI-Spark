@@ -1,0 +1,65 @@
+# Chinese translations for SuperPI
+# Copyright (C) 2025 SuperPI Project
+msgid ""
+msgstr ""
+"Project-Id-Version: superpi 1.0\n"
+"POT-Creation-Date: 2025-08-15 12:00+0800\n"
+"PO-Revision-Date: 2025-08-15 12:00+0800\n"
+"Last-Translator: SuperPI Team\n"
+"Language-Team: Chinese\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: pi_fftcs.c:96
+msgid "Calculation of PI using FFT and AGM, %s\n"
+msgstr "使用FFT和AGM计算圆周率π，%s\n"
+
+#: pi_fftcs.c:101
+msgid "Usage: %s digits\n"
+msgstr "用法: %s 位数\n"
+
+#: pi_fftcs.c:102
+msgid "Number of digits of pi to calculate?\n"
+msgstr "要计算多少位的圆周率π？\n"
+
+#: pi_fftcs.c:108
+msgid "initializing...\n"
+msgstr "正在初始化...\n"
+
+#: pi_fftcs.c:114
+msgid "nfft= %d\nradix= %d\nerror_margin= %g\n"
+msgstr "nfft= %d\n基数= %d\n误差范围= %g\n"
+
+#: pi_fftcs.c:115
+msgid "calculating %d digits of PI...\n"
+msgstr "正在计算 %d 位的圆周率π...\n"
+
+#: pi_fftcs.c:119
+msgid "AGM iteration\n"
+msgstr "AGM迭代\n"
+
+#: pi_fftcs.c:158
+msgid "precision= %d: %.2f sec\n"
+msgstr "精度= %d: %.2f 秒\n"
+
+#: pi_fftcs.c:189
+msgid "writing %s...\n"
+msgstr "正在写入 %s...\n"
+
+#: pi_fftcs.c:192
+msgid "%.2f sec. (real time)\n"
+msgstr "%.2f 秒 (实际时间)\n"
+
+#: pi_fftcs.c:202
+msgid "Hit RETURN to exit.\n"
+msgstr "按回车键退出。\n"
+
+#: pi_fftcs.c:104
+msgid "Error: Invalid input\n"
+msgstr "错误：输入无效\n"
+
+#: pi_fftcs.c:111
+msgid "Allocation Failure!\n"
+msgstr "内存分配失败！\n"

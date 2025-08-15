@@ -34,6 +34,7 @@ Example compilation:
 #include <stdlib.h>
 #include <time.h>
 #include <ctype.h>
+#include "i18n/i18n.h"
 
 void mp_load_0 (int n, int radix, int out[]);
 void mp_load_1 (int n, int radix, int out[]);
@@ -72,11 +73,7 @@ int mp_invisqrt (int n, int radix, int in, int out[],
 void mp_sprintf (int n, int log10_radix, int in[], char out[]);
 void mp_sscanf (int n, int log10_radix, char in[], int out[]);
 
-int is_chinese_locale() {
-    const char *lang = getenv("LANG");
-    if (lang == NULL) return 0;
-    return (strstr(lang, "zh_CN") != NULL || strstr(lang, "zh_SG") != NULL);
-}
+// 语言检测函数已移至 i18n.c
 
 int main(int argc, char *argv[]) {
   int nfft, log2_nfft, radix, log10_radix, n, j = 0, k = 0, l = 0, npow, nprc;
@@ -87,37 +84,26 @@ int main(int argc, char *argv[]) {
   clock_t start_time;
   double elap_time, loop_time;
   FILE *f_out;
-  int chinese = is_chinese_locale();
+  
+  i18n_init();
+  
 #ifndef QUIET_OUT
-  if (chinese) {
-    fprintf(stdout, "使用FFT和AGM计算圆周率π，%s\n", PI_FFTC_VER);
-  } else {
-    fprintf(stdout, "Calculation of PI using FFT and AGM, %s\n", PI_FFTC_VER);
-  }
+  fprintf(stdout, _("Calculation of PI using FFT and AGM, %s\n"), PI_FFTC_VER);
 #endif
 
   /* if not run with the proper parameters from the command line */
   if (argc != 2) {
-    if (chinese) {
-      printf("\n用法: %s 位数\n", argv[0]);
-      printf("\n要计算多少位的圆周率π？\n");
-    } else {
-      printf("\nUsage: %s digits\n", argv[0]);
-      printf("\nNumber of digits of pi to calculate?\n");
-    }
+    printf(_("Usage: %s digits\n"), argv[0]);
+    printf("%s", _("Number of digits of pi to calculate?\n"));
     if (scanf("%d", &nfft) != 1) {
-        fprintf(stderr, chinese ? "错误：输入无效\n" : "Error: Invalid input\n");
+        fprintf(stderr, "%s", _("Error: Invalid input\n"));
         return 1;
     }
   } else
     nfft = atoi(argv[1]);
 
 #ifndef QUIET_OUT
-  if (chinese) {
-    fprintf(stdout, "正在初始化...\n");
-  } else {
-    fprintf(stdout, "initializing...\n");
-  }
+  fprintf(stdout, "%s", _("initializing...\n"));
 #endif
   nfft /= 4;
   start_time = clock();
@@ -149,8 +135,8 @@ int main(int argc, char *argv[]) {
     radix *= 10;
   }
 #ifndef QUIET_OUT
-  fprintf(stdout, "nfft= %d\nradix= %d\nerror_margin= %g\n", nfft, radix, err);
-  fprintf(stdout, "calculating %d digits of PI...\n", log10_radix * (n - 2));
+  fprintf(stdout, _("nfft= %d\nradix= %d\nerror_margin= %g\n"), nfft, radix, err);
+  fprintf(stdout, _("calculating %d digits of PI...\n"), log10_radix * (n - 2));
 #endif
   /*
    * ---- a formula based on the AGM (Arithmetic-Geometric Mean) ----
@@ -213,7 +199,7 @@ int main(int argc, char *argv[]) {
   /* ---- a = a + e ---- */
   mp_add(n, radix, a, e, a);
 #ifndef QUIET_OUT
-  fprintf(stdout, "AGM iteration\n");
+  fprintf(stdout, "%s", _("AGM iteration\n"));
 #endif
   npow = 4;
   elap_time = ((double)clock() - (double)start_time) / CLOCKS_PER_SEC;
@@ -243,8 +229,7 @@ int main(int argc, char *argv[]) {
     loop_time = ((double)clock() - (double)start_loop_time) / CLOCKS_PER_SEC;
     elap_time += loop_time;
 #ifndef QUIET_OUT
-    fprintf(stdout, "precision= %d: %0.2f sec\n", 4 * nprc * log10_radix,
-            loop_time);
+    fprintf(stdout, _("precision= %d: %.2f sec\n"), 4 * nprc * log10_radix, loop_time);
 #endif
   } while (4 * nprc <= n);
   start_time = clock();
@@ -272,7 +257,7 @@ int main(int argc, char *argv[]) {
 
   f_out = fopen(filename, "w");
 #ifndef QUIET_OUT
-  fprintf(stdout, "writing %s...\n", filename);
+  fprintf(stdout, _("writing %s...\n"), filename);
 #endif
   do {
     if (!isdigit(*dgt)) {
@@ -323,11 +308,7 @@ int main(int argc, char *argv[]) {
     if (fgets(filename, 99, stdin) == NULL) {
         /* Ignore input error and continue */
     }
-    if (chinese) {
-      fprintf(stdout, "按回车键退出。\n");
-    } else {
-      fprintf(stdout, "Hit RETURN to exit.\n");
-    }
+    fprintf(stdout, "%s", _("Hit RETURN to exit.\n"));
     if (fgets(filename, 99, stdin) == NULL) {
         /* Ignore input error and continue */
     }

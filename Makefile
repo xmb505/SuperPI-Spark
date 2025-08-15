@@ -39,11 +39,11 @@ LDFLAGS = -static
 
 # Leave items below this point unchanged!
 
-all: pi_css5
+all: superpi
 
 
-pi_css5 : pi_fftcs.o fftsg_h.o
-	$(CC) $(CFLAGS) pi_fftcs.o fftsg_h.o ${MATH_LIBS} ${LDFLAGS} -o pi_css5
+superpi : pi_fftcs.o fftsg_h.o i18n/i18n.o
+	$(CC) $(CFLAGS) pi_fftcs.o fftsg_h.o i18n/i18n.o ${MATH_LIBS} ${LDFLAGS} -o superpi
 
 pi_fftcs.o : pi_fftcs.c
 	$(CC) $(CFLAGS) -c pi_fftcs.c -o pi_fftcs.o
@@ -51,16 +51,19 @@ pi_fftcs.o : pi_fftcs.c
 fftsg_h.o : fftsg_h.c
 	$(CC) $(CFLAGS) -c fftsg_h.c -o fftsg_h.o
 
+i18n/i18n.o : i18n/i18n.c
+	$(CC) $(CFLAGS) -c i18n/i18n.c -o i18n/i18n.o
+
 
 install: all
 	${MKDIR} ${PREFIX}/bin
-	${CP} pi_css5 ${PREFIX}/bin
+	${CP} superpi ${PREFIX}/bin
 
 install-strip: strip install
 
 strip: all
-	${STRIP} pi_css5
+	${STRIP} superpi
 
 clean:
-	${RM} pi_fftcs.o fftsg_h.o pi_css5
+	${RM} pi_fftcs.o fftsg_h.o superpi
 

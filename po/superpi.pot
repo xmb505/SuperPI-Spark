@@ -1,0 +1,74 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: superpi 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-08-15 12:00+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: pi_fftcs.c:96
+msgid "Calculation of PI using FFT and AGM, %s\n"
+msgstr ""
+
+#: pi_fftcs.c:101
+msgid "Usage: %s digits\n"
+msgstr ""
+
+#: pi_fftcs.c:102
+msgid "Number of digits of pi to calculate?\n"
+msgstr ""
+
+#: pi_fftcs.c:108
+msgid "initializing...\n"
+msgstr ""
+
+#: pi_fftcs.c:114
+msgid "nfft= %d\nradix= %d\nerror_margin= %g\n"
+msgstr ""
+
+#: pi_fftcs.c:115
+msgid "calculating %d digits of PI...\n"
+msgstr ""
+
+#: pi_fftcs.c:119
+msgid "AGM iteration\n"
+msgstr ""
+
+#: pi_fftcs.c:158
+msgid "precision= %d: %.2f sec\n"
+msgstr ""
+
+#: pi_fftcs.c:189
+msgid "writing %s...\n"
+msgstr ""
+
+#: pi_fftcs.c:192
+msgid "%.2f sec. (real time)\n"
+msgstr ""
+
+#: pi_fftcs.c:202
+msgid "Hit RETURN to exit.\n"
+msgstr ""
+
+#: pi_fftcs.c:104
+msgid "Error: Invalid input\n"
+msgstr ""
+
+#: pi_fftcs.c:111
+msgid "Allocation Failure!\n"
+msgstr ""
+
+#: pi_fftcs.c:110
+msgid "Allocation Failure!\n"
+msgstr ""
