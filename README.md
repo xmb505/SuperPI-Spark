@@ -9,7 +9,7 @@
 **使用 gcc：**
 
 ```bash
-gcc -O -funroll-loops -fomit-frame-pointer pi_fftcs.c fftsg_h.c -lm -o pi_css5
+gcc -O -funroll-loops -fomit-frame-pointer pi_fftcs.c fftsg_h.c -lm -o superpi
 ```
 
 **使用 Makefile：**
